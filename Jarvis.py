@@ -1,5 +1,3 @@
-#C:\Users\User\AppData\Local\Programs\Python\Python37-32\Scripts>
-
 import speech_recognition as sr
 import aspose.words as aw
 import webbrowser
@@ -442,7 +440,7 @@ def takeScreenshot(speech):
 ####Useful functions for screenshot()####
 #Saves the screenshot's name in txt
 def saveImageName(image):
-    f = open("screenshotnames.txt", "w")
+    f = open("txtFiles/screenshotnames.txt", "w")
     f.write(image)
     f.write("\n")
     f.close()
@@ -450,7 +448,7 @@ def saveImageName(image):
 #Returns the name of the last screenshot taken
 def lastImage():
     last_img = ""
-    with open("screenshotnames.txt", "r") as file:
+    with open("txtFiles/screenshotnames.txt", "r") as file:
         img = file.readlines()[-1]
         last_img = img
     return last_img
@@ -630,10 +628,10 @@ def jarvisFunctions():
     greeting()
     while True:
         x = False
-        speak(random.choice(responses('responses2')).strip())
+        speak(random.choice(responses('txtFiles/responses2')).strip())
         s = speechToText()
         if (s == "None"):
-            speak(random.choice(responses('responses1')).strip())
+            speak(random.choice(responses('txtFiles/responses1')).strip())
         sayHi(s)
         if (Terminate(s) == True):
             break

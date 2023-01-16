@@ -13,7 +13,7 @@ class JarvisGUI():
         self.WinWidth = root.winfo_screenwidth()
         self.root.geometry(f"{self.WinWidth}x{self.WinHeight}+0+0")
         self.root.configure(background = "blue")
-        image1 = images(self.root, "jarvis.jpg")
+        image1 = images(self.root, "Resourses/jarvis.jpg")
         button1 = buttons(root, "black", "white", "Task", "Arial 20", run, 5, 1000)
         Terminal = Text(root)
         Terminal.configure(background = "black", foreground = "white")
@@ -22,7 +22,7 @@ class JarvisGUI():
         Terminal.place(x = 5, y = 10)
         old_stdout = sys.stdout
         sys.stdout = Redirect(Terminal)
-        gif1 = Gif(root, "ironman.gif", 2000, 20)
+        gif1 = Gif(root, "Resourses/ironman.gif", 2000, 20)
         gif1.play_gif()
         
 class labels():

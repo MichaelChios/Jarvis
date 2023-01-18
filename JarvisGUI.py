@@ -76,12 +76,6 @@ class Redirect():
         if (self.autoscroll == True):
             self.widget.see('end')
 
-class textWidget():
-    def __init__(self, root, bg, fg, w, h, f, xcoord, ycoord):
-        self.root = root
-        self.text = Text(root, background = bg, foreground = fg, width = w, height = h, font = f)
-        self.text.place(x = xcoord, y = ycoord)
-
 def task():
     time.sleep(1)
     print(pyautogui.position())

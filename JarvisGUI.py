@@ -86,7 +86,6 @@ def run():
 def main():
     root = Tk()
     Jarvis = JarvisGUI(root)
-
     root.mainloop()
 
 if __name__ == '__main__':

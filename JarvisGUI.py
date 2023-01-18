@@ -13,17 +13,26 @@ class JarvisGUI():
         self.WinWidth = root.winfo_screenwidth()
         self.root.geometry(f"{self.WinWidth}x{self.WinHeight}+0+0")
         self.root.configure(background = "blue")
-        image1 = images(self.root, "Resourses/jarvis.jpg")
-        button1 = buttons(root, "black", "white", "Task", "Arial 20", run, 5, 1000)
-        Terminal = Text(root)
-        Terminal.configure(background = "black", foreground = "white")
-        Terminal.configure(width = 40, height = 30)
-        Terminal.configure(font = ("arial", 20))
-        Terminal.place(x = 5, y = 10)
+        self.insertImagesGifs(self.root)
+        self.buttonHandler(self.root)
+        self.createTerminal(self.root)
+
+    def buttonHandler(self, root):
+        self.button1 = buttons(root, "black", "white", "Task", "Arial 20", run, 5, 1000)
+
+    def insertImagesGifs(self, root):
+        self.image1 = images(self.root, "Resourses/jarvis.jpg")
+        self.gif1 = Gif(root, "Resourses/ironman.gif", 2000, 20)
+        self.gif1.play_gif()
+
+    def createTerminal(self, root):
+        self.Terminal = Text(root)
+        self.Terminal.configure(background = "black", foreground = "white")
+        self.Terminal.configure(width = 40, height = 30)
+        self.Terminal.configure(font = ("arial", 20))
+        self.Terminal.place(x = 5, y = 10)
         old_stdout = sys.stdout
-        sys.stdout = Redirect(Terminal)
-        gif1 = Gif(root, "Resourses/ironman.gif", 2000, 20)
-        gif1.play_gif()
+        sys.stdout = Redirect(self.Terminal)
         
 class labels():
     def __init__(self, root, LabelText, LabelFont, bg, w, h, xcoord, ycoord):

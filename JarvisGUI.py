@@ -1,7 +1,7 @@
 from tkinter import *
 import threading
 import sys
-from Jarvis import *
+from Jarvis import *        # It's not used yet
 from PIL import ImageTk, Image, ImageSequence
 import pyautogui
 import time

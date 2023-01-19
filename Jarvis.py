@@ -267,8 +267,8 @@ def doGoogleSearch(speech):
 #Plays a video on YouTube
 def YouTube(speech):
     if ("YouTube" in speech or "youtube" in speech or "you tube" in speech or "You Tube" in speech):
-        speak("What do tou want to watch on YouTube?")
-        topic = input()
+        speak("What do you want to watch on YouTube?")
+        topic = speechToText()
         speak("Playing " + topic + " on YouTube...")
         pywhatkit.playonyt(topic)
 

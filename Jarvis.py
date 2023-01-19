@@ -233,7 +233,7 @@ def openFiles2():
     os.chdir(wd)
 
 def doOpenFiles(speech):
-    if ("open" in speech):
+    if ("open" in speech and "file" in speech):
         openFiles2()
 
 ###########################################################################################################

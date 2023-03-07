@@ -1,7 +1,7 @@
 from tkinter import *
 import threading
 import sys
-from Jarvis import *        # It's not used yet
+from Jarvis import *
 from PIL import ImageTk, Image, ImageSequence
 import pyautogui
 import time
@@ -15,24 +15,40 @@ class JarvisGUI():
         self.root.configure(background = "blue")
         self.insertImagesGifs(self.root)
         self.buttonHandler(self.root)
+        self.wlabel = Label(self.root, font=('Helvetica', 18), justify='left')
+        self.wlabel.pack(padx = self.WinWidth-520, pady=40)
+        self.showWeather()
         self.createTerminal(self.root)
 
     def buttonHandler(self, root):
-        self.button1 = buttons(root, "black", "white", "Task", "Arial 20", run, 5, 1000)
+        self.button1 = buttons(root, "black", "white", "Task", "Arial 20", run, 5, self.WinHeight-280)
 
     def insertImagesGifs(self, root):
-        self.image1 = images(self.root, "Resourses/jarvis.jpg")
-        self.gif1 = Gif(root, "Resourses/ironman.gif", 2000, 20)
+        if(root.winfo_screenheight()==1080 and root.winfo_screenwidth()==1920):
+            self.image1 = images(self.root, "Resourses/jarvis1920x1080.jpg")
+        else:
+            self.image1 = images(self.root, "Resourses/jarvis.jpg")
+            
+        self.gif1 = Gif(root, "Resourses/ironman.gif", self.WinWidth-520, 20)
         self.gif1.play_gif()
 
     def createTerminal(self, root):
         self.Terminal = Text(root)
         self.Terminal.configure(background = "black", foreground = "white")
-        self.Terminal.configure(width = 40, height = 30)
+        self.Terminal.configure(width = 30, height = 20)
         self.Terminal.configure(font = ("arial", 20))
         self.Terminal.place(x = 5, y = 10)
         old_stdout = sys.stdout
         sys.stdout = Redirect(self.Terminal)
+
+    def update_weather(self):
+        self.weather = weather(findLocation()[1])
+        self.wlabel.config(bg="black", fg="white", text=findLocation()[1]+"\n\n"+self.weather)
+        self.wlabel.place(x=5, y=self.WinHeight-780)
+        self.root.after(5000, lambda : JarvisGUI.update_weather(self))
+
+    def showWeather(self):
+        threading.Thread(target = self.update_weather).start()
         
 class labels():
     def __init__(self, root, LabelText, LabelFont, bg, w, h, xcoord, ycoord):
@@ -92,10 +108,7 @@ def task():
 def run():
     threading.Thread(target = task).start()
 
-def main():
+if __name__ == '__main__':
     root = Tk()
     Jarvis = JarvisGUI(root)
     root.mainloop()
-
-if __name__ == '__main__':
-    main()

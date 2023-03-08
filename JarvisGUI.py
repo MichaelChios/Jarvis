@@ -16,8 +16,7 @@ class JarvisGUI():
         self.insertImagesGifs(self.root)
         self.buttonHandler(self.root)
         self.wlabel = Label(self.root, font=('Helvetica', 18), justify='left')
-        self.wlabel.pack(padx = self.WinWidth-520, pady=40)
-        self.showWeather()
+        threading.Thread(target = self.update_weather).start()
         self.createTerminal(self.root)
 
     def buttonHandler(self, root):
@@ -44,11 +43,11 @@ class JarvisGUI():
     def update_weather(self):
         self.weather = weather(findLocation()[1])
         self.wlabel.config(bg="black", fg="white", text=findLocation()[1]+"\n\n"+self.weather)
-        self.wlabel.place(x=5, y=self.WinHeight-780)
+        if(root.winfo_screenheight()==1080 and root.winfo_screenwidth()==1920):
+            self.wlabel.place(x=self.WinWidth-375, y=self.WinHeight-500)
+        else:
+            self.wlabel.place(x=5, y=self.WinHeight-780)
         self.root.after(5000, lambda : JarvisGUI.update_weather(self))
-
-    def showWeather(self):
-        threading.Thread(target = self.update_weather).start()
         
 class labels():
     def __init__(self, root, LabelText, LabelFont, bg, w, h, xcoord, ycoord):

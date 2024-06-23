@@ -1,8 +1,8 @@
 # Jarvis
 
 As a huge Marvel fan, I decided to create my own Jarvis, from Iron man. I have already programmed many actions for Jarvis, in order to help me with my everyday life.\
-The GUI is in a very initial state, as I put most of the time in his basic program.
-Also, some services only work for me as I have my personal data. I will add a new user function. For now, you can browse the code and put your data (email, directories etc).\
+The GUI is in a very initial state, as I put most of the time in his basic program.\
+Also, some services only work for me as I have my personal data. I will add a new user function. For now, you can browse the code and put your data (email, directories etc).
 
 Here are some services Jarvis can offer:
 1) Face Recognition

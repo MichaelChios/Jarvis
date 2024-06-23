@@ -340,7 +340,7 @@ def internetConnection():
 #Connects to my wifi
 def connectToWiFi():
     os.system('cmd /c "netsh wlan show networks" ')
-    name_of_router = "WindWiFi_A8E415"
+    name_of_router = "WindWiFi_A8E415" # Replace with your router's name
     os.system(f'''cmd /c "netsh wlan connect name={name_of_router}" ''')
 
 ###########################################################################################################
@@ -433,7 +433,7 @@ def screenshot():
     name_img = 0
     name_img = (int)(lastImage()) +1
     saveImageName((str)(name_img))
-    name_img = r"C:\Users\User\Desktop\ScreenshotJarvis\\screenshot_%s.png" % name_img
+    name_img = r"C:\Users\User\Desktop\ScreenshotJarvis\\screenshot_%s.png" % name_img # Or any path you want
     img = pyautogui.screenshot(name_img)
     
 def takeScreenshot(speech):
@@ -634,6 +634,15 @@ def faceID():
         return False
 
 ###########################################################################################################
+# What can Jarvis do
+def help(speech):
+    if ("help" in speech or "what can you do" in speech):
+        s = responses('txtFiles/whatIcando')
+        speak(s[0])
+        for i in range(1, len(s)):
+            print(s[i])
+        
+###########################################################################################################
 #Jarvis waits for next command
 def  doNothing(speech):
     if (speech != "None" or "wait" in speech or "Wait" in speech or "pause" in speech or "Pause" in speech):
@@ -675,6 +684,7 @@ def jarvisFunctions():
         takeScreenshot(s)
         doReadSelectedText(s)
         YouTube(s)
+        help(s)
         if (x == False):
             doOpenFiles(s)
         doNothing(s)

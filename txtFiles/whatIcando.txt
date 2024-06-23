@@ -1,0 +1,19 @@
+Here's what I can do:
+1) Face Recognition
+2) Greet you based on the time of day
+3) Create word, pdf and txt files
+4) Open any file from any directory
+5) Google search
+6) Play YouTube videos
+7) Send emails
+8) Check internet connection and if not connected, connect to your wifi
+9) Find your IP Address
+10) Find your location based on your IP
+11) Tell the weather of your area or any area you want
+12) Tell date and time
+13) Lock the screen
+14) Take screenshot
+15) Read a selected text
+16) Show system information
+17) Pause my activity by saying "wait" or "pause", or I will pause myself if I dont understand what you said
+18) Terminate my program by saying "Terminate"

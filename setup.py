@@ -11,8 +11,8 @@ def install_library(package_name):
 
 # List of libraries to install
 libraries = [
-    "speech_recognition",
-    "aspose.words",
+    "SpeechRecognition",
+    "aspose-words",
     "webbrowser",
     "subprocess",
     "pyautogui",

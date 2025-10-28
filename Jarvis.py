@@ -1,5 +1,8 @@
 import speech_recognition as sr
-import aspose.words as aw
+from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx2pdf import convert
 import webbrowser
 import subprocess
 import pyautogui
@@ -85,18 +88,56 @@ def greeting():
 #Functions about file management
 #Creates a file
 def createFile(name, type, text):
-    f = aw.Document()
-    builder = aw.DocumentBuilder(f)
-    font = builder.font
-    font.size = 16
+    # Create a Word document
+    doc = Document()
+
+    # Add a paragraph with formatted text
+    paragraph = doc.add_paragraph()
+    run = paragraph.add_run(text)
+
+    # Font settings
+    font = run.font
+    font.size = Pt(16)
     font.bold = True
     font.name = "Arial"
-    paragraphFormat = builder.paragraph_format
-    paragraphFormat.first_line_indent = 8
-    paragraphFormat.alignment = aw.ParagraphAlignment.JUSTIFY
-    paragraphFormat.keep_together = True
-    builder.writeln("{}".format(text))
-    f.save("{}.{}".format(name, type))
+
+    # Paragraph formatting
+    paragraph_format = paragraph.paragraph_format
+    paragraph_format.first_line_indent = Pt(8)
+    paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    paragraph_format.keep_together = True
+
+    # Determine base filename
+    base_name = f"{name}.docx"
+    doc.save(base_name)
+    convertFile(base_name, type, text)
+
+def convertFile(base_name, target_type, text):
+    """Converts a .docx file to PDF or TXT format."""
+    name, _ = os.path.splitext(base_name)
+
+    if target_type.lower() == "docx":
+        # Already saved
+        return
+
+    elif target_type.lower() == "pdf":
+        try:
+            convert(base_name, f"{name}.pdf")
+            print(f"PDF saved as {name}.pdf")
+        except Exception as e:
+            print(f"⚠️ PDF conversion failed: {e}")
+
+    elif target_type.lower() == "txt":
+        try:
+            with open(f"{name}.txt", "w", encoding="utf-8") as f:
+                f.write(text)
+            print(f"Text file saved as {name}.txt")
+        except Exception as e:
+            print(f"⚠️ TXT export failed: {e}")
+
+    else:
+        print(f"Unsupported file type: {target_type}")
+    os.remove(base_name)  # Clean up the intermediate .docx file
 
 #Input for file name
 def getFileName():

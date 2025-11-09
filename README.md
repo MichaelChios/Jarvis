@@ -1,83 +1,29 @@
-# Jarvis - AI Personal Assistant
+# Jarvis
 
-A Python-based AI personal assistant with voice interaction and face recognition capabilities.
+As a huge Marvel fan, I decided to create my own Jarvis, from Iron man. I have already programmed many actions for Jarvis, in order to help me with my everyday life.\
+The GUI is in a very initial state, as I put most of the time in his basic program.\
+Also, some services only work for me as I have my personal data. I will add a new user function. For now, you can browse the code and put your data (email, directories etc).
 
-## Features
+Here are some services Jarvis can offer:
+1) Face Recognition
+2) Greet you based on the time of day
+3) Create word, pdf and txt files
+4) Open any file from any directory
+5) Google search
+6) Play YouTube videos
+7) Send emails
 
-- Voice command recognition and response
-- Face recognition and authentication
-- Graphical user interface
-- Screenshot functionality
-- Custom responses and interactions
+## Setup
+### Step 1
+After you have cloned the repo, open the project and run the "setup.py" script.
+This installs all the necessary libraries.
 
-## Project Structure
+### Step 2
+From the "faceRecognition.py" script, run the "captureFaces()" function, in order to save your profile photos in the faces/me folder.
+These will be used by Jarvis to do a face recognition on you.
 
-```
-.
-├── Jarvis.py                    # Main assistant implementation
-├── faceRecognition.py          # Face recognition module
-├── setup.py                    # Project setup and dependencies
-├── FaceRecognitionFiles/       # Face recognition resources
-│   ├── haarcascade_frontalface_default.xml
-│   └── trainner.yml
-├── faces/                      # Face training data
-│   └── me/
-├── GUI/                        # Graphical interface components
-│   ├── JarvisButtons.py
-│   └── JarvisGUI.py
-├── Resources/                  # Additional resources
-└── txtFiles/                  # Configuration and response files
-    ├── responses1.txt
-    ├── responses2.txt
-    ├── screenshotnames.txt
-    └── whatIcando.txt
-```
+### Step 3
+Run Jarvis, ask him what he can do and enjoy!
 
-## Requirements
-
-- Python 3.x
-- OpenCV (for face recognition)
-- PyQt5 (for GUI)
-- Additional dependencies listed in `setup.py`
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-```
-
-2. Install dependencies:
-```bash
-python setup.py install
-```
-
-## Usage
-
-Run the main assistant:
-```bash
-python Jarvis.py
-```
-
-For face recognition setup:
-```bash
-python faceRecognition.py
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenCV for face recognition capabilities
-- PyQt5 for the graphical interface
-- Contributors and maintainers
+### Important note
+In order for Jarvis to send emails using your own email address, follow this guide: https://realpython.com/python-send-email/

@@ -160,10 +160,6 @@ Potential improvements could include:
 - Multi-language support
 - Advanced NLP capabilities
 
-## License
-
-[Add your license information here]
-
 ## Author
 
 MichaelChios
